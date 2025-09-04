@@ -9,5 +9,5 @@ urlpatterns = [
          name='course_edit'),
     path('<pk>/delete/', views.CourseDeleteView.as_view(),
          name='course_delete'),
-    path
-]
+    path('<pk>/module/', views.CourseModuleUpdateView.as_view()),
+         ]
