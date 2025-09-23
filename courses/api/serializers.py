@@ -5,4 +5,4 @@ from courses.models import Subject
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
-        fields = ["id", "title", "slug"]
+        fields = ["id", "title", "slug", "total_courses"]
