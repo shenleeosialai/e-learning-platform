@@ -14,7 +14,7 @@ urlpatterns = [
     #    views.SubjectDetailView.as_view(),
     #   name="subject_detail"),
     path("", include(routers.urls)),
-    path('courses/<pk>/',
-         views.CourseEnrollView.as_view(),
-         name='course_enroll'),
+    # path('courses/<pk>/',
+    #    views.CourseEnrollView.as_view(),
+    #   name='course_enroll'),
 ]
