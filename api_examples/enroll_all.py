@@ -27,7 +27,7 @@ while url is not None:
         )
         if r.status_code == 200:
             print(f'Successfully enrolled in {course_title}')
-        # else:
-            # print(f'Failed to enroll in {course_title}: {r.status_code}')
+        else:
+            print(f'Failed to enroll in {course_title}: {r.status_code}')
 
-# print(f'Available courses: {", ".join(available_courses)}')
+print(f'Available courses: {", ".join(available_courses)}')
