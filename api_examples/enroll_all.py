@@ -30,4 +30,4 @@ while url is not None:
         else:
             print(f'Failed to enroll in {course_title}: {r.status_code}')
 
-print(f'Available courses: {", ".join(available_courses)}')
+# print(f'Available courses: {", ".join(available_courses)}')
