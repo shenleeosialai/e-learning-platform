@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "daphne",
     "django.contrib.staticfiles",
     "courses.apps.CoursesConfig",
     "students.apps.StudentsConfig",
@@ -157,3 +158,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
         ]
 }
+
+ASGI_APPLICATION = 'educa.asgi.application'
