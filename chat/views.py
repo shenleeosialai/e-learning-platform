@@ -11,8 +11,22 @@ def course_chat_room(request, course_id):
     except Course.DoesNotExist:
         return HttpResponseForbidden("Course does not exist.")
 
+    latest_messages = course.chat_messages.select_related(
+        "user"
+        ).order_by("-sent_on")[
+        :50
+    ]
+    latest_messages = reversed(latest_messages)
+
     # if request.user not in course.students.all()
     # and request.user != course.instructor:
-        # return HttpResponseForbidden("You are not enrolled in this course.")
+    # return HttpResponseForbidden("You are not enrolled in this course.")
 
-    return render(request, "chat/room.html", {"course": course})
+    return render(
+        request,
+        "chat/room.html",
+        {
+            "course": course,
+            "latest_messages": latest_messages,
+        },
+    )
