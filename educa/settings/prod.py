@@ -1,14 +1,22 @@
+from decouple import config
+
 from .base import *
 
 DEBUG = False
 
-ADMINS = [("shenlee", "shenleekhalid@gmail.com")]
+ADMINS = [
+    ('shen', 'shenleekhalid@gmail.com'),
+]
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['.educaproject.com']
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "educa_db",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }

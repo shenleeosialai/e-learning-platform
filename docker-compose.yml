@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16.2
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: educa
+      POSTGRES_USER: shenlee
+      POSTGRES_PASSWORD: "shenlee@53"
+
+  web:
+    build: .
+    command: >
+      bash -c "./wait-for-it.sh db:5432 -- python /code/manage.py runserver 0.0.0.0:8000"
+    restart: always
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SETTINGS_MODULE: educa.settings.prod
+      POSTGRES_DB: educa
+      POSTGRES_USER: shenlee
+      POSTGRES_PASSWORD: "shenlee@53"
+    depends_on:
+      - db
