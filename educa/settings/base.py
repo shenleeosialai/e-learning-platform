@@ -26,9 +26,6 @@ SECRET_KEY = "django-insecure-a2-!jg$-rea=&z9&aopbu8r07d0(u5vj*ergoqirq+rj_5uudh
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -173,3 +170,5 @@ CHANNEL_LAYERS = {
 REDIS_URL = 'redis://cache:6379'
 CACHES['default']['LOCATION'] = REDIS_URL
 CHANNEL_LAYERS['default']['CONFIG']['hosts'] = [REDIS_URL]
+
+STATIC_ROOT = BASE_DIR / 'static'
