@@ -1,0 +1,82 @@
+# -----------------------------
+# Python / Django
+# -----------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+env/
+venv/
+ENV/
+env.bak/
+*.sqlite3
+db.sqlite3
+
+# Django-specific
+*.log
+*.pot
+*.pyc
+*.mo
+local_settings.py
+media/
+staticfiles/
+static_root/
+tmp/
+*.pid
+
+# -----------------------------
+# uWSGI
+# -----------------------------
+*.sock
+uwsgi_app.sock
+uwsgi.log
+uwsgi.pid
+
+# -----------------------------
+# Docker
+# -----------------------------
+# Ignore local build and volume data
+data/
+volumes/
+*.pid
+*.tar
+*.bak
+.docker/
+docker-compose.override.yml
+
+# -----------------------------
+# Environment / Secrets
+# -----------------------------
+.env
+.env.*
+*.key
+*.pem
+*.crt
+*.cert
+secrets.json
+
+# -----------------------------
+# IDEs / Editors
+# -----------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# -----------------------------
+# OS / Misc
+# -----------------------------
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+*.bak
+*.old

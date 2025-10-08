@@ -2,13 +2,13 @@ from decouple import config
 
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
 ADMINS = [
     ('shen', 'shenleekhalid@gmail.com'),
 ]
 
-ALLOWED_HOSTS = ['.educaproject.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'educa.com']
 
 DATABASES = {
     'default': {
