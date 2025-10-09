@@ -2,7 +2,7 @@ from decouple import config
 
 from .base import *
 
-DEBUG = True
+DEBUG = False
 
 ADMINS = [
     ('shen', 'shenleekhalid@gmail.com'),
@@ -20,3 +20,8 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+# security
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
