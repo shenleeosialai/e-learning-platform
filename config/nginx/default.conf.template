@@ -1,35 +1,54 @@
-# upstream for uwsgi
+# Upstream for uWSGI
 upstream uwsgi_app {
     server unix:/code/uwsgi_app.sock;
 }
 
+# Upstream for Daphne (WebSockets)
+upstream daphne {
+    server daphne:9001;
+}
+
+# Redirect all HTTP traffic to HTTPS
 server {
     listen 80;
     server_name www.educaproject.com educaproject.com;
     return 301 https://$host$request_uri;
 }
-server{
-    listen 433 ssl;
+
+# HTTPS server
+server {
+    listen 443 ssl;
     server_name www.educaproject.com educaproject.com;
-    error_log stderr warn;
-    access_log /dev/stdout main;
+
     ssl_certificate /code/ssl/educa.crt;
     ssl_certificate_key /code/ssl/educa.key;
     # ssl_certificate /etc/letsencrypt/live/educaproject.com/fullchain.pem;
     # ssl_certificate_key /etc/letsencrypt/live/educaproject.com/privkey.pem;
 
+    error_log stderr warn;
+    access_log /dev/stdout main;
 
+    # Django (uWSGI)
     location / {
         include /etc/nginx/uwsgi_params;
         uwsgi_pass uwsgi_app;
     }
+
+    # WebSocket routes via Daphne
+    location /ws/ {
+        proxy_pass http://daphne;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_redirect off;
+    }
+
+    # Static & media files
     location /static/ {
         alias /code/static/;
     }
+
     location /media/ {
         alias /code/media/;
     }
-    # location /.well-known/acme-challenge/ {
-    # root /var/www/certbot;
-    # }
 }
