@@ -11,7 +11,7 @@ upstream daphne {
 # Redirect all HTTP traffic to HTTPS
 server {
     listen 80;
-    server_name www.educaproject.com educaproject.com;
+    server_name *.educaproject.com educaproject.com;
     return 301 https://$host$request_uri;
 }
 
