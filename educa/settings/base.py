@@ -173,3 +173,5 @@ CACHES['default']['LOCATION'] = REDIS_URL
 CHANNEL_LAYERS['default']['CONFIG']['hosts'] = [REDIS_URL]
 
 STATIC_ROOT = BASE_DIR / 'static'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
